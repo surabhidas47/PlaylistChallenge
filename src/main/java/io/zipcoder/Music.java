@@ -24,20 +24,25 @@ public class Music {
 
         //while we arent already at the song we want to select
         while(!playList[current].contains(selection)){
+
             //we go forward until song is found
             plus++;
             //we are updating the position of the 'start index' as we search
-            //we use moodulator bc when we reach last song modulator result will be 0
-            //and brings us back to the 1st  index
-            current+=1 %playList.length;
+           // current++;
+
+            current+= 1 % chooseSong.size();
 
         }
         //resetting
         current= startIndex;
         while(!playList[current].contains(selection)) {
             rev++;
-            //we add the length of playlist incase the start index is 0
-            current = (1 - current + playList.length) % playList.length;
+
+            //incanse current is at 0 we would be at index -1
+            //so we add the length of choose size
+            current = (current-1+chooseSong.size()) %chooseSong.size();
+
+
         }
 
         //using the .min method to see if its less clicks forward or backwards to
